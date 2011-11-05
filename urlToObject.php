@@ -24,9 +24,10 @@ function urlToObject($url)
 	// download the given URL, and return output
 	$output = curl_exec($ch);
 	
-	$simpleXML = simplexml_load_string($output);
+	$movies = new SimpleXMLElement($xmlstr);
+
 	
-	print_r($simpleXML); 
+	print_r($movies); 
 	
 	$return = $simpleXML;
 	
