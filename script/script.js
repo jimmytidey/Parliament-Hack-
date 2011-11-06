@@ -14,20 +14,29 @@ home.filter = function() {
 		$('#isotope_container').isotope({filter: '.isotope-item'});		
 	}
 	
-	
+	$('#isotope_container').isotope({ layoutMode : 'masonry' });
 };
 	
 home.sort = function() {
 	
 	$('#isotope_container').isotope({
-		getSortData : {
-		  conservatives : function ( $elem ) {
-		    return parseInt($elem.find('.conservative').text());
-		  }
-		}
-	});		
+	  getSortData : {
+	    conservative : function ( $elem ) {
+	      return parseInt($elem.find('.conservative').html());
+	    },
+	    labour : function ( $elem ) {
+	      return parseInt($elem.find('.labour').html());
+	    }	
+	  }
+	});
 
-	$('#isotope_container').isotope({ sortBy : 'conservatives' });
+
+	$('#isotope_container').isotope({ 
+	  sortBy : 'conservative',
+	  sortAscending : true
+	});
+
+	
 	
 }
 	
