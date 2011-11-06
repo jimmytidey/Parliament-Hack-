@@ -55,7 +55,10 @@ function urlToText($url)
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	
 	// timeout in seconds
-	curl_setopt($ch, CURLOPT_TIMEOUT, 100);
+	curl_setopt($ch, CURLOPT_TIMEOUT, 500);
+	
+	curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, 0);
 	
 	// download the given URL, and return output
 	$output = curl_exec($ch);

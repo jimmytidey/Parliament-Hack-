@@ -9,7 +9,7 @@ function openCalais($terms) {
 	$apiKey = "ssjzwz6tkseg47kcbfv5t2pz";
 	
 	// Content and input/output formats
-	$query_text = urlencode("Microsoft Yahoo");
+	$query_text = urldecode($terms);
 	
 	$content = $query_text;
 	
@@ -42,29 +42,24 @@ function openCalais($terms) {
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_TIMEOUT, 60);
 	$response = curl_exec($ch);
-	curl_close($ch);
-	
-	print_r($response);
-	
+	curl_close($ch);	
+
 	$return = array(); 
 	
 	$response = json_decode($response);
-	
+
 	$i = 0; 
-	
-	print_r($response);
-	
-	/*
+
 	foreach ($response as $key => $value) {
 		if ($key != 'doc') 
 		{
-			$return[$i]['type'] = $value->_type;
-			$return[$i]['name'] = $value->name;
+			@$return[$i]['type'] = $value->_type;
+			@$return[$i]['name'] = $value->name;
 			$i++;
 		}	
 	}
 	
-	*/
+	
 	
 	//print_r($return); 
 	
